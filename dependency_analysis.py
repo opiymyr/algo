@@ -17,7 +17,6 @@ class DependencyGraph:
         self.deps[from_][to] = weight
 
     def get_topological_order(self) -> Optional[List[str]]:
-        """Порядок сборки: сначала то, от чего зависят другие. None, если есть цикл."""
         remaining = {v: len(d) for v, d in self.deps.items()}
         dependents: Dict[str, List[str]] = {v: [] for v in self.deps}
         for v, d in self.deps.items():
